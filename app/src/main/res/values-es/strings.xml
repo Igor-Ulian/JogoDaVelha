@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">JoguitoDeLaVelita</string>
-    <string name="direitos">© Todos los direititos reservatidos para Igorzito Ulianzito :)</string>
-    <string name="jogador1">Jogadorzito 1</string>
-    <string name="jogador2">Jogadorzito 2</string>
+    <string name="app_name">Ceros y Crucess</string>
+    <string name="direitos">© Todos los derechos reservados para Igor Ulian :)</string>
+    <string name="jogador1">Jugador 1</string>
+    <string name="jogador2">Jugador 2</string>
     <string name="x">X</string>
-    <string name="msgErro">Digitito los nombrezitos</string>
+    <string name="msgErro">Ingrese los nombres</string>
     <string name="o">O</string>
     <string name="Vazio">" "</string>
-    <string name="str1Jogador">1 Jogadorzito</string>
-    <string name="str2Jogadores">2 Jogadorezitos</string>
-    <string name="strIniciar">Iniciarito</string>
-    <string name="strJogoDaVelha">Joguito de la Velita</string>
-    <string name="vezJogador">Vez del Jogadorzito:</string>
+    <string name="str1Jogador">1 Jugador</string>
+    <string name="str2Jogadores">2 Jugadores</string>
+    <string name="strIniciar">Empezar</string>
+    <string name="strJogoDaVelha">Ceros y Crucess</string>
+    <string name="vezJogador">Tiempo de jugador:</string>
     <string name="Jogador">Jogador</string>
-    <string name="strSlotOcupado">Este Quadradito esta ocupadito</string>
-    <string name="strVezDoBotAguarde">Vezita del BOTito, aguardito sua vezita]</string>
+    <string name="strSlotOcupado">Esta plaza ya está ocupada!</string>
+    <string name="strVezDoBotAguarde">BOT tiempo, espere su turno</string>
     <string name="strJogoEmpatado">Joguito Empatadito</string>
-    <string name="strGanhou">Ganhouzito</string>
+    <string name="strGanhou">Ganaste</string>
     <string name="strVoce">Usted</string>
-    <string name="strSuaVez">Sua Veizita</string>
-    <string name="strVezDoBot">Veizita do Botito</string>
-    <string name="strOJogador">"O Jogadito "</string>
+    <string name="strSuaVez">Su turno</string>
+    <string name="strVezDoBot">Tiempo BOT</string>
+    <string name="strOJogador">El jugador</string>
 </resources>
