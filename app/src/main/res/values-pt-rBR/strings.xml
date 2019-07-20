@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JogoDaVelha</string>
+    <string name="o">O</string>
+    <string name="x">X</string>
+    <string name="vezJogador">"Vez do jogador: "</string>
+    <string name="Vazio">" "</string>
+    <string name="direitos">© Todos os direitos reservados para Igor Ulian :)</string>
+    <string name="jogador1">Jogador 1</string>
+    <string name="jogador2">Jogador 2</string>
+    <string name="msgErro">Digite os nomes</string>
+    <string name="str1Jogador">1 Jogador</string>
+    <string name="str2Jogadores">2 Jogadores</string>
+    <string name="strIniciar">Iniciar</string>
+    <string name="strJogoDaVelha">Jogo da Velha</string>
+    <string name="Jogador">Jogador</string>
+    <string name="strSlotOcupado">Esse quadrado já está ocupado!</string>
+    <string name="strVezDoBotAguarde">Vez do BOT, aguarde sua vez</string>
+    <string name="strJogoEmpatado">Jogo empatado</string>
+    <string name="strGanhou">Ganhou</string>
+    <string name="strVoce">Você</string>
+    <string name="strSuaVez">Sua vez</string>
+    <string name="strVezDoBot">Vez do bot</string>
+    <string name="strOJogador">"O Jogador "</string>
+</resources>
