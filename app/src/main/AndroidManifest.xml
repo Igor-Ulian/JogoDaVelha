@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tela1Jogador"></activity>
+        <activity android:name=".tela1Jogador"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">></activity>
         <activity
             android:name=".telaNomeJogadores"
             android:configChanges="orientation"

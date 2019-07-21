@@ -23,7 +23,6 @@ public class tela1Jogador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela1_jogador);
         txt = findViewById(R.id.txt);
-        Bundle par = getIntent().getExtras();
         nomePlayer1 = getString(R.string.strVoce);
         playernm = nomePlayer1;
         txt.setText(getString(R.string.strSuaVez));
@@ -39,7 +38,6 @@ public class tela1Jogador extends AppCompatActivity {
                 proximo();
             }else{
                 toastar(getString(R.string.strSlotOcupado));
-                return;
             }
         }else{
             toastar(getString(R.string.strVezDoBotAguarde));
@@ -70,13 +68,19 @@ public class tela1Jogador extends AppCompatActivity {
         }, 2000);
     }
 
-    public void resetarJogo(){ //Function to Reset Game
-        int n = 1;
-        for(int x = 1; x<= 9 ; x++){
-            Button btn = getBotaoNumero(n);
-            btn.setText(R.string.Vazio);  // For from set all Button names to " "
-            n++;
-        }
+    public void resetarJogo(int n1, int n2, int n3){ //Function to Reset Game
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() { //Delay
+                int n = 1;
+                for(int x = 1; x<= 9 ; x++){
+                    Button btn = getBotaoNumero(n);
+                    btn.setText(R.string.Vazio);  // For from set all Button names to " "
+                    n++;
+                }
+            }
+        }, 2000);
     }
 
     public void toastar(String str){ // Function to send toast
@@ -90,8 +94,77 @@ public class tela1Jogador extends AppCompatActivity {
     }
 
     public void printaBOT(){ // BOT print
-        int n = (int) Math.floor(Math.random() * (9 - 1 + 1)) + 1;
-        for(int x = 1; x <= 100; x++){
+        int n = 1;
+
+        for(int x = 1; x <= 9; x++){ //Search for a good play
+            Button btn = getBotaoNumero(n);
+
+                if(btn.getText().toString() != "X" && btn.getText().toString() != "O"){
+
+                    //MIDDLE
+                    for(int bt = 1; bt <= 4; bt++){ //Middle
+                        if(getBotaoNumero(n - bt) != null && getBotaoNumero(n + bt) != null){
+                            if(getBotaoNumero(n - bt).getText().toString().equals("O")
+                                    && getBotaoNumero(n + bt).getText().toString().equals("O")){
+                                btn.setText("O");
+                                return;
+                            }
+                        }
+                    }
+
+                    //MEDIUM
+                    int bt = 1;
+                    for(int c = 1; c <= 2; c++){ //Horizontal e Vertical
+                        if(getBotaoNumero(n - bt) != null && getBotaoNumero(n - bt*2) != null){
+                            if(getBotaoNumero(n - bt).getText().toString().equals("O")
+                                    && getBotaoNumero(n - bt*2).getText().toString().equals("O")){
+                                btn.setText("O");
+                                return;
+                            }
+                        }
+                        bt = 3;
+                    }
+
+                    bt = 1;
+                    for(int c = 1; c <= 2; c++){ //Horizontal e Vertical
+                        if(getBotaoNumero(n + bt) != null && getBotaoNumero(n + bt*2) != null){
+                            if(getBotaoNumero(n + bt).getText().toString().equals("O")
+                                    && getBotaoNumero(n + bt*2).getText().toString().equals("O")){
+                                btn.setText("O");
+                                return;
+                            }
+                        }
+                        bt = 3;
+                    }
+
+                    for(int c = 1; c <= 4; c++){ // i'm lost, help-me
+                        if(getBotaoNumero(n - c) != null && getBotaoNumero(n - c*2) != null){
+                            if(getBotaoNumero(n - c).getText().toString().equals("X")
+                                    && getBotaoNumero(n - c*2).getText().toString().equals("X")){
+                                btn.setText("O");
+                                return;
+                            }
+                        }
+                    }
+
+                    int c = 1;
+                    for(int d = 1; d<= 2; d++){
+                        if(getBotaoNumero(n + c) != null && getBotaoNumero(n + c*2) != null){
+                            if(getBotaoNumero(n + c).getText().toString().equals("X")
+                                    && getBotaoNumero(n + c*2).getText().toString().equals("X")){
+                                btn.setText("O");
+                                return;
+                            }
+                        }
+                        c = 3;
+                    }
+
+                }
+            n++;
+        }
+
+        n = (int) Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+        for(int x = 1; x <= 100; x++){  // If the BOT don't find a good play he play in some empty slot
             Button btn = getBotaoNumero(n);
             if(btn.getText().toString() != "X" && btn.getText().toString() != "O"){
                 btn.setText("O");
@@ -99,7 +172,6 @@ public class tela1Jogador extends AppCompatActivity {
             }
             n = (int) Math.floor(Math.random() * (9 - 1 + 1)) + 1;
         }
-        toastar("" + n);
     }
 
     public Button getBotao(View v){  //Function to get the button according the view
@@ -157,19 +229,19 @@ public class tela1Jogador extends AppCompatActivity {
         if(  (btn01.getText() == btn02.getText() && btn02.getText() == btn03.getText())
                 &&  (btn01.getText() == "X" || btn01.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(1,2,3);
         }
 
         if(  (btn04.getText() == btn05.getText() && btn05.getText() == btn06.getText())
                 &&  (btn04.getText() == "X" || btn04.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou) );
-            resetarJogo();
+            resetarJogo(4,5,6);
         }
 
         if(  (btn07.getText() == btn08.getText() && btn08.getText() == btn09.getText())
                 &&  (btn07.getText() == "X" || btn07.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(7,8,9);
         }
 
         //Vertical
@@ -177,19 +249,19 @@ public class tela1Jogador extends AppCompatActivity {
         if(  (btn01.getText() == btn04.getText() && btn04.getText() == btn07.getText())
                 &&  (btn01.getText() == "X" || btn01.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(1,4,7);
         }
 
         if(  (btn02.getText() == btn05.getText() && btn05.getText() == btn08.getText())
                 &&  (btn02.getText() == "X" || btn02.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(2,5,8);
         }
 
         if(  (btn03.getText() == btn06.getText() && btn06.getText() == btn09.getText())
                 &&  (btn03.getText() == "X" || btn03.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(3,6,9);
         }
 
         //Diagonal
@@ -197,13 +269,13 @@ public class tela1Jogador extends AppCompatActivity {
         if(  (btn01.getText() == btn05.getText() && btn05.getText() == btn09.getText())
                 &&  (btn01.getText() == "X" || btn01.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(1,5,9);
         }
 
         if(  (btn03.getText() == btn05.getText() && btn05.getText() == btn07.getText())
                 &&  (btn03.getText() == "X" || btn03.getText() == "O")  ){
             toastar(playernm +" " + getString(R.string.strGanhou));
-            resetarJogo();
+            resetarJogo(3,5,7);
         }
 
         //Tied
@@ -213,7 +285,7 @@ public class tela1Jogador extends AppCompatActivity {
                 && (btn05.getText() == "X" || btn05.getText() == "O") && (btn06.getText() == "X" || btn06.getText() == "O")
                 && (btn07.getText() == "X" || btn07.getText() == "O") && (btn08.getText() == "X" || btn08.getText() == "O")
                 && (btn09.getText() == "X" || btn09.getText() == "O")){
-            resetarJogo();
+            resetarJogo(0,0,0);
             toastar(getString(R.string.strJogoEmpatado));
         }
 
@@ -233,26 +305,6 @@ public class tela1Jogador extends AppCompatActivity {
         btn07 = findViewById(R.id.btn07);
         btn08 = findViewById(R.id.btn08);
         btn09 = findViewById(R.id.btn09);
-    }
-
-    public void delay(final int c){ //Bot Delay
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(c);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        Handler h = new Handler();
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            }
-        }, c);
-
     }
 
 }

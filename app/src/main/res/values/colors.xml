@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#081A27</color>
     <color name="colorPrimaryDark">#0e0e0e</color>
-    <color name="colorAccent">#9B1D60</color>
+    <color name="colorAccent">#761549</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="azulfundo">#081A27</color>
     <color name="PretoFundo">#0F0F0F</color>
 </resources>
